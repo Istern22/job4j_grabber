@@ -22,7 +22,6 @@ public class SqlRuParse {
                 Post post = new Post(td);
                 System.out.println(post.getLink());
                 System.out.println(post.getTitle());
-                System.out.println(post.getDate());
                 System.out.println(detail(post));
             }
             page++;
@@ -30,12 +29,13 @@ public class SqlRuParse {
     }
 
     public static String detail(Post post) throws IOException {
+        String date = post.getDate();
         String description = "";
         Document doc = Jsoup.connect(post.getLink()).get();
         Element row = doc.select(".msgBody").get(1);
         for (var item : row.textNodes()) {
             description = description + item + System.lineSeparator();
         }
-        return description;
+        return date + System.lineSeparator() + description;
     }
 }
