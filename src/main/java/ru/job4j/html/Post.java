@@ -20,12 +20,23 @@ public class Post {
         this.td = td;
     }
 
+    public Post(String link) {
+        this.link = link;
+    }
+
+    public Post(String link, String title, String date, String description) {
+        this.link = link;
+        this.title = title;
+        this.date = date;
+        this.description = description;
+    }
+
     public String getLink() {
-        return td.child(0).attr("href");
+        return this.link;
     }
 
     public String getTitle() {
-        return td.child(0).text();
+        return this.title;
     }
 
     public String getDescription() {
@@ -33,7 +44,7 @@ public class Post {
     }
 
     public String getDate() {
-        return td.parent().child(5).text();
+        return this.date;
     }
 
     public void setLink(String link) {
@@ -50,5 +61,10 @@ public class Post {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return link + title + date + description;
     }
 }
