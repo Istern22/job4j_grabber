@@ -43,12 +43,12 @@ public class SqlRuParse implements Parse {
     @Override
     public Post detail(String link) throws IOException {
         Document doc = Jsoup.connect(link).get();
-        String title = System.lineSeparator() + doc.select(".messageHeader").get(0).ownText();
-        String date = System.lineSeparator() + doc.select(".msgFooter").get(0).ownText().substring(0, 16);
+        String title = doc.select(".messageHeader").get(0).ownText();
+        String date = doc.select(".msgFooter").get(0).ownText().substring(0, 16);
         String description = "";
         Element row = doc.select(".msgBody").get(1);
         for (var item : row.textNodes()) {
-            description = description + System.lineSeparator() + item;
+            description = description + item + System.lineSeparator();
         }
         return new Post(link, title, date, description);
     }

@@ -65,6 +65,6 @@ public class Post {
 
     @Override
     public String toString() {
-        return link + title + date + description;
+        return link + System.lineSeparator() + title + System.lineSeparator() + date + System.lineSeparator() + description;
     }
 }

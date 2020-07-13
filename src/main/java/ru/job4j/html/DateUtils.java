@@ -5,7 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DateUtils {
-    public static String toDate(String dateString) {
+    public static LocalDateTime toDate(String dateString) {
         LocalDateTime formatDate;
         if (dateString.contains("сегодня")) {
             formatDate = LocalDateTime.now();
@@ -44,6 +44,6 @@ public class DateUtils {
             dateString = String.join(" ", items);
             formatDate = LocalDateTime.parse(dateString, DateTimeFormatter.ofPattern("d MM yy, HH:mm"));
         }
-        return formatDate.format(DateTimeFormatter.ofPattern("dd MMMM yyyy, HH:mm", new Locale("ru")));
+        return formatDate;
     }
 }
