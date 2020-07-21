@@ -11,13 +11,20 @@ import java.util.List;
 
 public class SqlRuParse implements Parse {
 
-    public static void main(String[] args) throws IOException {
-        SqlRuParse parse = new SqlRuParse();
+    private static String link = "https://www.sql.ru/forum/job-offers/";
+
+    private static List<Post> result = new ArrayList<>();
+
+    public static List<Post> getResult() {
+        return result;
+    }
+
+    public SqlRuParse() {
         int page = 0;
         while (page < 6) {
-            List<Post> posts = parse.list("https://www.sql.ru/forum/job-offers/" + page);
+            List<Post> posts = list(link + page);
             for (Post post : posts) {
-                System.out.println(parse.detail(post.getLink()));
+                result.add(post);
             }
             page++;
         }
